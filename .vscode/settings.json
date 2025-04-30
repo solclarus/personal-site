@@ -1,0 +1,34 @@
+{
+	"editor.formatOnSave": true,
+	"editor.codeActionsOnSave": {
+		"source.fixAll.biome": "explicit",
+		"source.organizeImports.biome": "explicit"
+	},
+	"[javascript]": {
+		"editor.defaultFormatter": "biomejs.biome"
+	},
+	"[typescript]": {
+		"editor.defaultFormatter": "biomejs.biome"
+	},
+	"[typescriptreact]": {
+		"editor.defaultFormatter": "biomejs.biome"
+	},
+	"[javascriptreact]": {
+		"editor.defaultFormatter": "biomejs.biome"
+	},
+	"[prisma]": {
+		"editor.defaultFormatter": "Prisma.prisma"
+	},
+	"files.autoSave": "afterDelay",
+	"files.autoSaveDelay": 1000,
+	"editor.tabSize": 2,
+	"editor.insertSpaces": true,
+	"editor.wordWrap": "on",
+	"tailwindcss-intellisense.trace.server": "off",
+	"tailwindCSS.emmetCompletions": true,
+	"tailwindCSS.colorDecorators": true,
+	"tailwindCSS.includeLanguages": {
+		"typescript": "javascript",
+		"typescriptreact": "javascript"
+	}
+}
