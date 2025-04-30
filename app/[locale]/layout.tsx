@@ -35,10 +35,13 @@ export default async function RootLayout({
 						enableSystem
 						disableTransitionOnChange
 					>
-						<div className="min-h-dvh">
-							{children}
+						<div className="max-w-4xl mx-auto relative px-6">
+							<div className="absolute inset-x-6 top-0 bottom-0 border-x border-dashed pointer-events-none" />
+							<div className="flex flex-col min-h-dvh">
+								<div className="px-6 pt-12 flex-grow">{children}</div>
+								<Footer />
+							</div>
 							<FloatingMenu />
-							<Footer />
 						</div>
 					</ThemeProvider>
 				</NextIntlClientProvider>
