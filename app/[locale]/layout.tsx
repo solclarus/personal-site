@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import "@/styles/globals.css";
-import { FloatingMenu } from "@/components/floating-menu";
-import { Footer } from "@/components/footer";
 import { ThemeProvider } from "@/components/theme/theme-provider";
 import { routing } from "@/i18n/routing";
+import { cn } from "@/lib/utils";
+import { GeistMono } from "geist/font/mono";
+import { GeistSans } from "geist/font/sans";
 import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { notFound } from "next/navigation";
 
@@ -25,7 +26,11 @@ export default async function RootLayout({
 	}
 
 	return (
-		<html lang={locale} suppressHydrationWarning>
+		<html
+			className={cn(GeistSans.variable, GeistMono.variable)}
+			lang={locale}
+			suppressHydrationWarning
+		>
 			<head />
 			<body>
 				<NextIntlClientProvider>
@@ -35,14 +40,7 @@ export default async function RootLayout({
 						enableSystem
 						disableTransitionOnChange
 					>
-						<div className="max-w-4xl mx-auto relative px-6">
-							<div className="absolute inset-x-6 top-0 bottom-0 border-x border-dashed pointer-events-none" />
-							<div className="flex flex-col min-h-dvh">
-								<div className="px-6 pt-12 flex-grow">{children}</div>
-								<Footer />
-							</div>
-							<FloatingMenu />
-						</div>
+						{children}
 					</ThemeProvider>
 				</NextIntlClientProvider>
 			</body>
