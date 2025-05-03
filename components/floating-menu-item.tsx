@@ -29,7 +29,7 @@ export function FloatingMenuItem({ href, icon }: Props) {
 			asChild
 			className={cn(
 				"rounded-full",
-				isActive && "border-2 border-accent text-amber-400",
+				isActive && "border-2 border-orange-400 text-orange-400",
 			)}
 			variant="outline"
 			size="icon"

@@ -25,22 +25,20 @@ export default async function Home() {
 
 	return (
 		<main className="flex flex-col">
-			<section className=" relative">
+			<section className="relative">
 				<Avatar className="mb-3 size-16 rounded-full border">
 					<AvatarImage src={appConfig.icon} alt={appConfig.author} />
 					<AvatarFallback>
 						{appConfig.author.toUpperCase().charAt(0)}
 					</AvatarFallback>
 				</Avatar>
-				<h2 className="mb-3 text-xl font-bold text-orange-400">
+				<h2 className="mb-3 text-xl font-mono font-extrabold text-orange-400">
 					{appConfig.author}
 				</h2>
-				<p className="text-start">
+				<p className="font-mono text-start">
 					{t.rich("greeting", {
 						name: (name) => (
-							<span className="font-extrabold italic text-orange-400">
-								{name}
-							</span>
+							<span className="font-bold italic text-orange-400">{name}</span>
 						),
 					})}
 				</p>
