@@ -11,18 +11,15 @@ import {
 import { Input } from "@/components/ui/input";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { PlusCircle, RefreshCw } from "lucide-react";
-import { useRef } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
+import { fetchRss } from "../action";
 import { formSchema } from "../schema";
-import { useFeedStore } from "../store";
+import { useFeeds } from "../store";
 import type { FormValues } from "../type";
-import { useFeeds } from "../use-feed";
 
 export function AddFeedForm() {
-	const formRef = useRef<HTMLFormElement>(null);
-	const { subscribedUrls, addSubscription, setIsLoading } = useFeedStore();
-	const { mutate: mutateFeeds, isLoading } = useFeeds(subscribedUrls);
+	const { urls, addFeed } = useFeeds();
 
 	const form = useForm<FormValues>({
 		resolver: zodResolver(formSchema),
@@ -34,36 +31,26 @@ export function AddFeedForm() {
 
 	const onSubmit = async (values: FormValues) => {
 		try {
-			setIsLoading(true);
-
-			if (subscribedUrls.includes(values.url)) {
-				toast.info("このフィードはすでに購読しています");
-				return true;
+			await fetchRss(values.url);
+			if (urls.includes(values.url)) {
+				toast.info("このフィードはすでに追加されています");
+				return;
 			}
-
-			addSubscription(values.url);
+			addFeed(values.url);
 			toast.success("フィードを追加しました");
-
-			await mutateFeeds();
-
-			form.reset();
-			setTimeout(() => {
-				formRef.current?.querySelector("input")?.focus();
-			}, 100);
 		} catch (error) {
 			const message = error instanceof Error ? error.message : "不明なエラー";
 			toast.error(`フィード追加エラー: ${message}`);
 		} finally {
-			setIsLoading(false);
+			form.reset();
 		}
 	};
 
 	return (
 		<Form {...form}>
 			<form
-				ref={formRef}
 				onSubmit={form.handleSubmit(onSubmit)}
-				className="flex gap-2 mb-6"
+				className="flex flex-1 gap-2"
 			>
 				<FormField
 					control={form.control}
@@ -74,12 +61,12 @@ export function AddFeedForm() {
 								<Input
 									placeholder="https://example.com/rss"
 									type="url"
-									disabled={isLoading}
+									disabled={form.formState.isSubmitting}
 									{...field}
 									className="w-full"
 								/>
 							</FormControl>
-							<FormMessage className="absolute mt-1 text-xs" />
+							<FormMessage />
 						</FormItem>
 					)}
 				/>
@@ -87,11 +74,9 @@ export function AddFeedForm() {
 				<Button
 					type="submit"
 					size={"icon"}
-					disabled={
-						isLoading || !form.formState.isValid || form.formState.isSubmitting
-					}
+					disabled={!form.formState.isValid || form.formState.isSubmitting}
 				>
-					{isLoading ? (
+					{form.formState.isSubmitting ? (
 						<RefreshCw className="size-4 animate-spin" />
 					) : (
 						<PlusCircle className="size-4" />

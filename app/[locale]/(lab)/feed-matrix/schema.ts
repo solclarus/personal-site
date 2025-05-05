@@ -6,17 +6,18 @@ export const formSchema = z.object({
 		.string()
 		.trim()
 		.min(1, { message: "URLを入力してください" })
-		.url({ message: "有効なURLを入力してください" })
 		.refine(
 			(url) => {
 				try {
-					new URL(url);
-					return true;
+					const parsedUrl = new URL(url);
+					return (
+						parsedUrl.protocol === "http:" || parsedUrl.protocol === "https:"
+					);
 				} catch {
 					return false;
 				}
 			},
-			{ message: "正しいURL形式で入力してください" },
+			{ message: "HTTPまたはHTTPSで始まる有効なURLを入力してください" },
 		),
 });
 

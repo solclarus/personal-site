@@ -19,9 +19,7 @@ export const ArticleList = memo(function ArticleList({
 	if (articles.length === 0) {
 		return (
 			<Card>
-				<CardContent className="pt-6">
-					<p>{emptyMessage}</p>
-				</CardContent>
+				<CardContent>{emptyMessage}</CardContent>
 			</Card>
 		);
 	}

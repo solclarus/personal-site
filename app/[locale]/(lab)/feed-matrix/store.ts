@@ -1,48 +1,56 @@
+// store.ts (統合版)
 "use client";
+
+import useSWR from "swr";
+import useSWRMutation from "swr/mutation";
 import { z } from "zod";
 import { create } from "zustand";
 import { createJSONStorage, persist } from "zustand/middleware";
+import { fetchRss, refreshFeed } from "./action";
+import { getAllArticles } from "./lib";
+import type { Feed } from "./type";
 
 // ストアの状態型定義
-interface FeedsState {
-	subscribedUrls: string[];
-	selectedFeedUrl: string;
+type FeedsState = {
+	urls: string[];
+	selectedUrl: string;
 	isLoading: boolean;
-
-	addSubscription: (url: string) => void;
-	removeSubscription: (url: string) => void;
+	addFeed: (url: string) => void;
+	removeFeed: (url: string) => void;
 	selectFeed: (url: string) => void;
 	setIsLoading: (isLoading: boolean) => void;
-}
+};
 
 // 永続化するデータのスキーマ
 const persistedStateSchema = z.object({
-	subscribedUrls: z.array(z.string().url()),
-	selectedFeedUrl: z.string(),
+	urls: z.array(z.string().url()),
+	selectedUrl: z.string(),
 });
 
+/**
+ * フィードの状態を管理するストア
+ */
 export const useFeedStore = create<FeedsState>()(
 	persist(
 		(set) => ({
-			subscribedUrls: [],
-			selectedFeedUrl: "all",
+			urls: [],
+			selectedUrl: "all",
 			isLoading: false,
 
-			// 購読追加
-			addSubscription: (url) => {
+			addFeed: (url) => {
 				try {
 					// URL形式を検証
 					const validUrl = z.string().url().parse(url);
 
 					set((state) => {
 						// 重複チェック
-						if (state.subscribedUrls.includes(validUrl)) {
+						if (state.urls.includes(validUrl)) {
 							return state;
 						}
 
 						return {
-							subscribedUrls: [...state.subscribedUrls, validUrl],
-							isAddingFeed: false,
+							urls: [...state.urls, validUrl],
+							selectedUrl: validUrl,
 						};
 					});
 				} catch (error) {
@@ -50,19 +58,16 @@ export const useFeedStore = create<FeedsState>()(
 				}
 			},
 
-			// 購読削除
-			removeSubscription: (url) => {
+			removeFeed: (url) => {
 				set((state) => ({
-					subscribedUrls: state.subscribedUrls.filter((u) => u !== url),
-					selectedFeedUrl:
-						state.selectedFeedUrl === url ? "all" : state.selectedFeedUrl,
+					urls: state.urls.filter((u) => u !== url),
+					selectedUrl: state.selectedUrl === url ? "all" : state.selectedUrl,
 				}));
 			},
 
-			// フィード選択
 			selectFeed: (url) => {
 				set({
-					selectedFeedUrl: url,
+					selectedUrl: url,
 				});
 			},
 
@@ -74,8 +79,8 @@ export const useFeedStore = create<FeedsState>()(
 			name: "rss-subscriptions",
 			storage: createJSONStorage(() => localStorage),
 			partialize: (state) => ({
-				subscribedUrls: state.subscribedUrls,
-				selectedFeedUrl: state.selectedFeedUrl,
+				urls: state.urls,
+				selectedUrl: state.selectedUrl,
 			}),
 			// 永続化したデータをロードする際にバリデーション
 			onRehydrateStorage: () => (state) => {
@@ -83,22 +88,160 @@ export const useFeedStore = create<FeedsState>()(
 					try {
 						// スキーマによる検証
 						const validatedState = persistedStateSchema.parse({
-							subscribedUrls: state.subscribedUrls,
-							selectedFeedUrl: state.selectedFeedUrl,
+							urls: state.urls,
+							selectedUrl: state.selectedUrl,
 						});
 
 						// 検証済みの値をセット
-						state.subscribedUrls = validatedState.subscribedUrls;
-						state.selectedFeedUrl = validatedState.selectedFeedUrl;
+						state.urls = validatedState.urls;
+						state.selectedUrl = validatedState.selectedUrl;
 					} catch (error) {
 						console.error("保存されたデータの検証エラー:", error);
 
 						// エラーの場合は初期値にリセット
-						state.subscribedUrls = [];
-						state.selectedFeedUrl = "all";
+						state.urls = [];
+						state.selectedUrl = "all";
 					}
 				}
 			},
 		},
 	),
 );
+
+/**
+ * フィードデータと操作を統合する単一のフック
+ */
+export function useFeeds() {
+	const {
+		urls,
+		selectedUrl,
+		isLoading: isStoreLoading,
+		addFeed,
+		removeFeed,
+		selectFeed,
+		setIsLoading,
+	} = useFeedStore();
+
+	// SWRでフィードデータを取得
+	const {
+		data: feeds = [],
+		error,
+		isLoading: isFeedsLoading,
+		isValidating,
+		mutate: mutateFeeds,
+	} = useSWR(
+		urls.length ? ["feeds", urls] : null,
+		async () => {
+			if (!urls.length) return [];
+
+			// 並列でフィードを取得
+			const results = await Promise.allSettled(
+				urls.map((url) => fetchRss(url)),
+			);
+
+			// 成功したもののみを返す
+			const feeds: Feed[] = [];
+
+			results.forEach((result, index) => {
+				if (result.status === "fulfilled") {
+					feeds.push(result.value);
+				} else {
+					const url = urls[index];
+					const error = result.reason;
+					console.error(`フィード取得エラー (${url}):`, error);
+
+					// エラーのあったフィードは空のデータを返す
+					feeds.push({
+						url,
+						title: `読み込みエラー: ${url}`,
+						items: [],
+					});
+				}
+			});
+
+			return feeds;
+		},
+		{
+			revalidateOnFocus: false,
+			revalidateOnReconnect: true,
+			dedupingInterval: 60000, // 1分間は同じリクエストを重複させない
+		},
+	);
+
+	// 全記事を取得
+	const { data: allArticles = [] } = useSWR(
+		feeds.length ? ["allArticles", feeds.map((f) => f.url).join(",")] : null,
+		() => getAllArticles(feeds),
+		{
+			revalidateOnFocus: false,
+		},
+	);
+
+	// フィード更新ミューテーション
+	const { trigger: reloadFeedTrigger, isMutating: isRefreshing } =
+		useSWRMutation("reload-feed", async (_key: string) => {
+			if (!urls.length) return [];
+
+			const updatedFeeds = [];
+			for (const url of urls) {
+				try {
+					await refreshFeed(url);
+					const feed = await fetchRss(url);
+					updatedFeeds.push(feed);
+				} catch (error) {
+					console.error(`フィード更新エラー (${url}):`, error);
+					updatedFeeds.push({
+						url,
+						title: `読み込みエラー: ${url}`,
+						items: [],
+					});
+				}
+			}
+
+			return updatedFeeds;
+		});
+
+	// フィード更新関数
+	const reloadFeed = async (): Promise<boolean> => {
+		try {
+			setIsLoading(true);
+			await reloadFeedTrigger();
+			await mutateFeeds();
+			return true;
+		} catch (error) {
+			console.error("フィード更新エラー :", error);
+			return false;
+		} finally {
+			setIsLoading(false);
+		}
+	};
+
+	// 表示状態の判定
+	const isAnyLoading = isStoreLoading || isFeedsLoading;
+	const showSkeleton = urls.length > 0 && isAnyLoading;
+	const showFeeds = feeds.length > 0 && (!showSkeleton || !isAnyLoading);
+	const showWelcome = !showSkeleton && !showFeeds;
+
+	return {
+		// 状態
+		urls,
+		feeds,
+		allArticles,
+		selectedUrl,
+		isLoading: isAnyLoading,
+		isRefreshing,
+		error,
+
+		// UI表示状態
+		showSkeleton,
+		showFeeds,
+		showWelcome,
+
+		// アクション
+		addFeed,
+		removeFeed,
+		reloadFeed,
+		selectFeed,
+		mutateFeeds,
+	};
+}
