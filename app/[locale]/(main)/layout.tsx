@@ -5,6 +5,7 @@ import { Footer } from "@/components/footer";
 import { routing } from "@/i18n/routing";
 import { hasLocale } from "next-intl";
 import { notFound } from "next/navigation";
+import { Toaster } from "sonner";
 
 export const metadata: Metadata = {
 	title: "Create Next App",
@@ -24,13 +25,16 @@ export default async function MainLayout({
 	}
 
 	return (
-		<div className="max-w-3xl mx-auto relative px-6">
-			<div className="absolute inset-x-6 top-0 bottom-0 border-x border-dashed pointer-events-none" />
-			<div className="flex flex-col min-h-dvh">
-				<div className="p-6 flex-grow">{children}</div>
-				<Footer />
+		<>
+			<Toaster />
+			<div className="max-w-3xl mx-auto relative px-6">
+				<div className="absolute inset-x-6 top-0 bottom-0 border-x border-dashed pointer-events-none" />
+				<div className="flex flex-col min-h-dvh">
+					<div className="p-6 flex-grow">{children}</div>
+					<Footer />
+				</div>
+				<FloatingMenu />
 			</div>
-			<FloatingMenu />
-		</div>
+		</>
 	);
 }

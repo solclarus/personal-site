@@ -16,6 +16,13 @@ export const WORKS: Record<string, Work[]> = {
 			image: "/images/lab/vista-voyage.jpg",
 			description: "Cinemento is a movie log",
 		},
+		{
+			id: "feed-matrix",
+			href: "/feed-matrix",
+			title: "FeedMatrix",
+			image: "/images/lab/feed-matrix.jpg",
+			description: "FeedMatrix is a simple RSS reader",
+		},
 	],
 	portfolio: [
 		{
