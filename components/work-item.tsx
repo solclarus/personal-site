@@ -13,6 +13,7 @@ export function WorkItem({ work }: { work: Work }) {
 						alt={work.title}
 						fill
 						className="object-cover"
+						unoptimized
 					/>
 				</div>
 			</Link>
