@@ -27,10 +27,10 @@ export default async function MainLayout({
 	return (
 		<>
 			<Toaster />
-			<div className="max-w-3xl mx-auto relative px-6">
-				<div className="absolute inset-x-6 top-0 bottom-0 border-x border-dashed pointer-events-none" />
+			<div className="max-w-3xl mx-auto relative px-4 md:px-6">
+				<div className="absolute inset-x-4 md:inset-x-6 top-0 bottom-0 border-x border-dashed pointer-events-none" />
 				<div className="flex flex-col min-h-dvh">
-					<div className="p-6 flex-grow">{children}</div>
+					<div className="p-4 md:p-6 flex-grow">{children}</div>
 					<Footer />
 				</div>
 				<FloatingMenu />
