@@ -5,7 +5,7 @@ import Image from "next/image";
 export function WorkItem({ work }: { work: Work }) {
 	return (
 		<section>
-			<hr className="border-t border-dashed relative min-w-dvw left-[50%] -translate-x-[50%] my-6" />
+			<hr className="border-t border-dashed relative min-w-dvw left-[50%] -translate-x-[50%] my-4 md:my-6" />
 			<Link href={work.href} target="_blank">
 				<div className="relative aspect-video overflow-hidden mb-3">
 					<Image
