@@ -1,14 +1,14 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
+import { Button } from "@c/ui/button";
 import {
 	Form,
 	FormControl,
 	FormField,
 	FormItem,
 	FormMessage,
-} from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
+} from "@c/ui/form";
+import { Input } from "@c/ui/input";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { PlusCircle, RefreshCw } from "lucide-react";
 import { useForm } from "react-hook-form";

@@ -21,12 +21,12 @@ export const ArticleCard = memo(function ArticleCard({
 			href={article.link}
 			target="_blank"
 			rel="noopener noreferrer"
-			className="p-4 border group block h-full rounded-lg transition-all hover:bg-gray-100 dark:hover:bg-gray-800"
+			className="group block h-full rounded-lg border p-4 transition-all hover:bg-gray-100 dark:hover:bg-gray-800"
 		>
 			<div className="font-medium text-lg">{article.title}</div>
-			<div className="text-sm text-gray-500 mt-1">
+			<div className="mt-1 text-gray-500 text-sm">
 				{showFeedTitle && article.feedTitle && (
-					<div className="text-gray-600 dark:text-gray-400 font-medium">
+					<div className="font-medium text-gray-600 dark:text-gray-400">
 						{article.feedTitle}
 					</div>
 				)}

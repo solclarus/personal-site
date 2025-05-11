@@ -5,9 +5,9 @@ import Image from "next/image";
 export function WorkItem({ work }: { work: Work }) {
 	return (
 		<section>
-			<hr className="border-t border-dashed relative min-w-dvw left-[50%] -translate-x-[50%] my-4 md:my-6" />
+			<hr className="-translate-x-[50%] relative left-[50%] my-4 min-w-dvw border-t border-dashed md:my-6" />
 			<Link href={work.href} target="_blank">
-				<div className="relative aspect-video overflow-hidden mb-3">
+				<div className="relative mb-3 aspect-video overflow-hidden">
 					<Image
 						src={work.image}
 						alt={work.title}
@@ -18,7 +18,7 @@ export function WorkItem({ work }: { work: Work }) {
 				</div>
 			</Link>
 			<h3 className="font-semibold">{work.title}</h3>
-			<p className="text-sm text-muted-foreground">{work.description}</p>
+			<p className="text-muted-foreground text-sm">{work.description}</p>
 		</section>
 	);
 }

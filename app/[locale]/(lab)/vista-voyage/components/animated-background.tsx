@@ -38,12 +38,12 @@ const AnimatedBackground = () => {
 			<div className="absolute inset-0">
 				<canvas
 					ref={canvasRef}
-					className="absolute top-0 left-0 w-full h-full"
+					className="absolute top-0 left-0 h-full w-full"
 				/>
 			</div>
 
 			<div className="absolute inset-0 flex items-center justify-center">
-				<div className="max-w-xl w-4/5 h-4/5 bg-white/10 backdrop-blur-none rounded-xl border border-white/20 shadow-lg p-6 overflow-hidden flex flex-col items-center justify-center">
+				<div className="flex h-4/5 w-4/5 max-w-xl flex-col items-center justify-center overflow-hidden rounded-xl border border-white/20 bg-black/30 p-6 shadow-lg backdrop-blur-none">
 					<ThemeSwitcher themeType={themeType} setThemeType={setThemeType} />
 				</div>
 			</div>

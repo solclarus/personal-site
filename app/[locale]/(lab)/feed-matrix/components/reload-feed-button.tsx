@@ -1,6 +1,6 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
+import { Button } from "@c/ui/button";
 import { RefreshCwIcon } from "lucide-react";
 import { toast } from "sonner";
 import { useFeeds } from "../store";

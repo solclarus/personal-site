@@ -1,6 +1,6 @@
 "use client";
 
-import { Card, CardContent } from "@/components/ui/card";
+import { Card, CardContent } from "@c/ui/card";
 import { memo } from "react";
 import type { Article } from "../type";
 import { ArticleCard } from "./article-card";
@@ -25,7 +25,7 @@ export const ArticleList = memo(function ArticleList({
 	}
 
 	return (
-		<div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+		<div className="grid grid-cols-1 gap-4 md:grid-cols-3">
 			{articles.map((article) => (
 				<ArticleCard
 					key={`${article.feedUrl}-${article.link}`}

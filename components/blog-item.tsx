@@ -1,6 +1,6 @@
-import { Badge } from "@/components/ui/badge";
 import { Link } from "@/i18n/navigation";
 import type { Article } from "@/types/newt/article";
+import { Badge } from "@c/ui/badge";
 import { useFormatter } from "next-intl";
 
 export const BlogItem = ({ article }: { article: Article }) => {
@@ -9,11 +9,11 @@ export const BlogItem = ({ article }: { article: Article }) => {
 
 	return (
 		<section>
-			<hr className="border-t border-dashed relative min-w-dvw left-[50%] -translate-x-[50%] my-6" />
-			<h2 className="text-lg font-bold truncate">
+			<hr className="-translate-x-[50%] relative left-[50%] my-6 min-w-dvw border-t border-dashed" />
+			<h2 className="truncate font-bold text-lg">
 				<Link href={`/blog/${article.slug}`}>{article.title}</Link>
 			</h2>
-			<time className="text-sm text-muted-foreground">
+			<time className="text-muted-foreground text-sm">
 				{format.dateTime(date, {
 					year: "numeric",
 					month: "long",

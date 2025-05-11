@@ -1,5 +1,5 @@
-import { BlogItem } from "@/components/blog-item";
 import { getArticles } from "@/lib/newt";
+import { BlogItem } from "@c/blog-item";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {

@@ -19,6 +19,12 @@
 	"[prisma]": {
 		"editor.defaultFormatter": "Prisma.prisma"
 	},
+	"[json]": {
+		"editor.defaultFormatter": "biomejs.biome"
+	},
+	"[jsonc]": {
+		"editor.defaultFormatter": "biomejs.biome"
+	},
 	"files.autoSave": "afterDelay",
 	"files.autoSaveDelay": 1000,
 	"editor.tabSize": 2,

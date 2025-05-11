@@ -1,13 +1,13 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
+import { Button } from "@c/ui/button";
 import {
 	Tooltip,
 	TooltipContent,
 	TooltipProvider,
 	TooltipTrigger,
-} from "@/components/ui/tooltip";
-import { cn } from "@/lib/utils";
+} from "@c/ui/tooltip";
 import { THEMES } from "@vista-voyage/config";
 import type { ThemeType } from "@vista-voyage/type";
 
@@ -21,14 +21,14 @@ const THEME_COLORS: Record<ThemeType, string> = {
 	snow: "text-slate-100",
 	space: "text-purple-300",
 	bubbles: "text-cyan-500",
-	sakura: "text-pink-500",
+	sakura: "text-pink-300",
 	autumn: "text-amber-400",
 	matrix: "text-green-400",
 };
 
 export function ThemeSwitcher({ themeType, setThemeType }: Props) {
 	return (
-		<div className="flex gap-4 flex-wrap items-center justify-center">
+		<div className="flex flex-wrap items-center justify-center gap-4">
 			{(Object.keys(THEMES) as ThemeType[]).map((type) => {
 				const Icon = THEMES[type].icon;
 				const isActive = themeType === type;
@@ -39,13 +39,13 @@ export function ThemeSwitcher({ themeType, setThemeType }: Props) {
 							<TooltipTrigger asChild>
 								<Button
 									size={"icon"}
-									variant={"outline"}
+									variant={"ghost"}
 									disabled={themeType === type}
 									onClick={() => setThemeType(type)}
 									className={cn(
 										"cursor-pointer transition-all",
 										isActive
-											? `${THEME_COLORS[type]} ring-2 ring-white ring-opacity-50 scale-110`
+											? `${THEME_COLORS[type]} scale-110 ring-2 ring-white ring-opacity-50`
 											: THEME_COLORS[type],
 									)}
 								>

@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import "@/styles/globals.css";
-import { FloatingMenu } from "@/components/floating-menu";
-import { Footer } from "@/components/footer";
 import { routing } from "@/i18n/routing";
+import { FloatingMenu } from "@c/floating-menu";
+import { Footer } from "@c/footer";
+import { ScrollProgress } from "@c/ui/scroll-progress";
 import { hasLocale } from "next-intl";
 import { notFound } from "next/navigation";
 import { Toaster } from "sonner";
@@ -27,10 +28,11 @@ export default async function MainLayout({
 	return (
 		<>
 			<Toaster />
-			<div className="max-w-3xl mx-auto relative px-4 md:px-6">
-				<div className="absolute inset-x-4 md:inset-x-6 top-0 bottom-0 border-x border-dashed pointer-events-none" />
-				<div className="flex flex-col min-h-dvh">
-					<div className="p-4 md:p-6 flex-grow">{children}</div>
+			<ScrollProgress />
+			<div className="relative mx-auto max-w-3xl px-4 md:px-6">
+				<div className="pointer-events-none absolute inset-x-4 top-0 bottom-0 border-x border-dashed md:inset-x-6" />
+				<div className="flex min-h-dvh flex-col">
+					<div className="flex-grow p-4 md:p-6">{children}</div>
 					<Footer />
 				</div>
 				<FloatingMenu />

@@ -1,6 +1,8 @@
 "use client";
-import { Button } from "@/components/ui/button";
+
+import { Button } from "@c/ui/button";
 import { ArrowBigUpDash } from "lucide-react";
+import { motion } from "motion/react";
 
 export function OnlyUp() {
 	function scrollToTop() {
@@ -9,12 +11,15 @@ export function OnlyUp() {
 
 	return (
 		<Button
-			className="rounded-full"
+			className="cursor-pointer rounded-full"
 			onClick={scrollToTop}
-			variant="outline"
+			variant="ghost"
 			size="icon"
+			asChild
 		>
-			<ArrowBigUpDash />
+			<motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+				<ArrowBigUpDash />
+			</motion.div>
 		</Button>
 	);
 }
