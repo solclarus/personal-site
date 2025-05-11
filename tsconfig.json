@@ -21,6 +21,7 @@
 		],
 		"paths": {
 			"@/*": ["./*"],
+			"@c/*": ["components/*"],
 			"@vista-voyage/*": ["app/[locale]/(lab)/vista-voyage/*"]
 		}
 	},

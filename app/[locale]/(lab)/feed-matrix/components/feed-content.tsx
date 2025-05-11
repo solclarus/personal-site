@@ -1,6 +1,6 @@
 "use client";
 
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@c/ui/tabs";
 import { useFeeds } from "../store";
 import { ArticleHeader } from "./article-header";
 import { ArticleList } from "./article-list";
@@ -11,7 +11,7 @@ export function FeedContent() {
 	return (
 		<Tabs defaultValue="all" value={selectedUrl} onValueChange={selectFeed}>
 			{feeds.length > 0 && (
-				<TabsList className="mb-4 overflow-x-auto flex w-full">
+				<TabsList className="mb-4 flex w-full overflow-x-auto">
 					<TabsTrigger value="all">すべての記事</TabsTrigger>
 					{feeds.map((feed) => (
 						<TabsTrigger key={feed.url} value={feed.url}>

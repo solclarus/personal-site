@@ -1,10 +1,10 @@
-import { WorkItem } from "@/components/work-item";
 import { WORKS } from "@/config/work";
+import { WorkItem } from "@c/work-item";
 
 export default async function Lab() {
 	return (
 		<main className="flex flex-col">
-			<h2 className="text-xl font-semibold">Lab</h2>
+			<h2 className="font-semibold text-xl">Lab</h2>
 			<p>This page shows works like laboratories.</p>
 			{WORKS.lab.map((work) => (
 				<WorkItem key={work.id} work={work} />

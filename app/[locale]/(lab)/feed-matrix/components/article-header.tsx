@@ -15,15 +15,15 @@ export const ArticleHeader = memo(function ArticleHeader({
 	const domain = extractDomain(selectedUrl);
 
 	return (
-		<div className="flex justify-between items-center mb-4 flex-wrap gap-2">
+		<div className="mb-4 flex flex-wrap items-center justify-between gap-2">
 			<div className="flex items-center gap-2">
-				<h2 className="text-xl font-semibold truncate">{feed.title}</h2>
+				<h2 className="truncate font-semibold text-xl">{feed.title}</h2>
 				{domain && (
 					<Link
 						href={`https://${domain}`}
 						target="_blank"
 						rel="noopener noreferrer"
-						className="text-xs flex items-center gap-1 text-blue-600 hover:underline"
+						className="flex items-center gap-1 text-blue-600 text-xs hover:underline"
 					>
 						<ExternalLink size={12} />
 						<span className="hidden sm:inline">{domain}</span>

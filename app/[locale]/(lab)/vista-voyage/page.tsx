@@ -8,7 +8,7 @@ const AnimatedBackground = dynamic(
 	{
 		ssr: false,
 		loading: () => (
-			<div className="h-screen w-full flex items-center justify-center bg-gray-900 text-white">
+			<div className="flex h-screen w-full items-center justify-center bg-gray-900 text-white">
 				Loading animation...
 			</div>
 		),
