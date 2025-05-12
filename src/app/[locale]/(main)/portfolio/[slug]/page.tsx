@@ -8,13 +8,7 @@ export default async function PortfolioDetail({ params }: Props) {
 	const { slug } = await params;
 	const locale = await getLocale();
 	console.log(slug, locale);
-	const { default: Post } = await import(`contents/${slug}/${locale}.mdx`);
+	const { default: Post } = await import(`@/contents/${slug}/${locale}.mdx`);
 
 	return <Post />;
 }
-
-export function generateStaticParams() {
-	return [{ slug: "welcome" }, { slug: "about" }];
-}
-
-export const dynamicParams = false;

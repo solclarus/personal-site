@@ -1,15 +1,7 @@
-import { getArticleBySlug, getArticles } from "@/lib/newt";
+import { getArticleBySlug } from "@/lib/newt";
 import type { Metadata } from "next";
 
 type Params = Promise<{ slug: string }>;
-
-export async function generateStaticParams() {
-	const articles = await getArticles();
-	return articles.map((article) => ({
-		slug: article.slug,
-	}));
-}
-export const dynamicParams = false;
 
 export async function generateMetadata({
 	params,
