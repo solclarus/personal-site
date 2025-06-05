@@ -7,14 +7,11 @@ export const getPortfolio = async (slug: string): Promise<Portfolio> => {
 	const locale = await getLocale();
 	const portfolio = await import(`@/contents/${slug}/${locale}.mdx`);
 
-	const { title, icon, image, href, createdAt, description } =
-		portfolio.metadata;
+	const { title, href, createdAt, description } = portfolio.metadata;
 
 	return {
 		slug,
 		title,
-		icon,
-		image,
 		href,
 		createdAt,
 		description,

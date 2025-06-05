@@ -9,7 +9,7 @@ export function PortfolioItem({ portfolio }: { portfolio: Portfolio }) {
 			<Link href={`/portfolio/${portfolio.slug}`}>
 				<div className="relative mb-3 aspect-video overflow-hidden">
 					<Image
-						src={portfolio.image}
+						src={`/images/portfolio/${portfolio.slug}.jpg`}
 						alt={portfolio.title}
 						fill
 						className="object-cover"

@@ -7,7 +7,7 @@ export function WorkItem({ portfolio }: { portfolio: Portfolio }) {
 		<Link href={`/portfolio/${portfolio.slug}`} className="flex items-center">
 			<div className="flex aspect-square shrink-0 items-center justify-center overflow-hidden rounded-md border">
 				<Image
-					src={portfolio.icon}
+					src={`/images/portfolio/icon-${portfolio.slug}.jpg`}
 					alt={portfolio.title}
 					width={40}
 					height={40}
