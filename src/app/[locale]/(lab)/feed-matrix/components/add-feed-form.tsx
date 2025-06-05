@@ -1,14 +1,14 @@
 "use client";
 
-import { fetchRss } from "@feed-matrix/action";
-import { formSchema } from "@feed-matrix/schema";
-import { useFeeds } from "@feed-matrix/store";
-import type { FormValues } from "@feed-matrix/type";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { fetchRss } from "@lab/feed-matrix/action";
+import { formSchema } from "@lab/feed-matrix/schema";
+import { useFeeds } from "@lab/feed-matrix/store";
+import type { FormValues } from "@lab/feed-matrix/type";
 import { Button } from "@ui/button";
 import { Form, FormControl, FormField, FormItem, FormMessage } from "@ui/form";
 import { Input } from "@ui/input";
-import { PlusCircle, RefreshCw } from "lucide-react";
+import { PlusCircleIcon, RefreshCwIcon } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 
@@ -71,9 +71,9 @@ export function AddFeedForm() {
 					disabled={!form.formState.isValid || form.formState.isSubmitting}
 				>
 					{form.formState.isSubmitting ? (
-						<RefreshCw className="size-4 animate-spin" />
+						<RefreshCwIcon className="size-4 animate-spin" />
 					) : (
-						<PlusCircle className="size-4" />
+						<PlusCircleIcon className="size-4" />
 					)}
 				</Button>
 			</form>

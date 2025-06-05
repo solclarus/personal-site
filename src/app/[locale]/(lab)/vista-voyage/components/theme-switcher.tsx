@@ -1,6 +1,8 @@
 "use client";
 
 import { cn } from "@/lib/utils";
+import { THEMES } from "@lab/vista-voyage/config";
+import type { ThemeType } from "@lab/vista-voyage/type";
 import { Button } from "@ui/button";
 import {
 	Tooltip,
@@ -8,8 +10,6 @@ import {
 	TooltipProvider,
 	TooltipTrigger,
 } from "@ui/tooltip";
-import { THEMES } from "@vista-voyage/config";
-import type { ThemeType } from "@vista-voyage/type";
 
 type Props = {
 	themeType: ThemeType;

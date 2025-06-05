@@ -1,8 +1,8 @@
 "use client";
 
-import { ArticleHeader } from "@feed-matrix/components/article-header";
-import { ArticleList } from "@feed-matrix/components/article-list";
-import { useFeeds } from "@feed-matrix/store";
+import { ArticleHeader } from "@lab/feed-matrix/components/article-header";
+import { ArticleList } from "@lab/feed-matrix/components/article-list";
+import { useFeeds } from "@lab/feed-matrix/store";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@ui/tabs";
 
 export function FeedContent() {

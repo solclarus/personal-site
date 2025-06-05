@@ -18,7 +18,6 @@ export function PortfolioItem({ portfolio }: { portfolio: Portfolio }) {
 				</div>
 			</Link>
 			<h3 className="font-semibold">{portfolio.title}</h3>
-			<p className="text-muted-foreground text-sm">{portfolio.description}</p>
 		</section>
 	);
 }

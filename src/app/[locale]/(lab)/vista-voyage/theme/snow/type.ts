@@ -1,4 +1,4 @@
-import type { BaseParticle } from "@vista-voyage/type";
+import type { BaseParticle } from "@lab/vista-voyage/type";
 
 export type SnowParticle = BaseParticle & {
 	speedX: number;

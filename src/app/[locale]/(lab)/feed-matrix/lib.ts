@@ -1,6 +1,6 @@
 "use client";
 
-import type { Article, Feed } from "@feed-matrix/type";
+import type { Article, Feed } from "@lab/feed-matrix/type";
 
 export function getAllArticles(feeds: Feed[]): Article[] {
 	if (!feeds.length) return [];

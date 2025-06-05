@@ -1,4 +1,4 @@
-import type { Size, SpaceParticle } from "@vista-voyage/type";
+import type { Size, SpaceParticle } from "@lab/vista-voyage/type";
 
 // 流れ星の出現を制御するためのグローバル状態
 let lastShootingStarTime = 0;

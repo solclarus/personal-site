@@ -1,7 +1,7 @@
 "use client";
 
-import { ArticleCard } from "@feed-matrix/components/article-card";
-import type { Article } from "@feed-matrix/type";
+import { ArticleCard } from "@lab/feed-matrix/components/article-card";
+import type { Article } from "@lab/feed-matrix/type";
 import { Card, CardContent } from "@ui/card";
 import { memo } from "react";
 

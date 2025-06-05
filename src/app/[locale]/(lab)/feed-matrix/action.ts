@@ -1,7 +1,7 @@
 "use server";
 
-import { apiResponseSchema, feedSchema } from "@feed-matrix/schema";
-import type { ApiResponse, Feed, FeedItem } from "@feed-matrix/type";
+import { apiResponseSchema, feedSchema } from "@lab/feed-matrix/schema";
+import type { ApiResponse, Feed, FeedItem } from "@lab/feed-matrix/type";
 import { XMLParser } from "fast-xml-parser";
 import { revalidateTag } from "next/cache";
 import { z } from "zod";

@@ -1,4 +1,4 @@
-import type { MatrixParticle, Size } from "@vista-voyage/type";
+import type { MatrixParticle, Size } from "@lab/vista-voyage/type";
 
 const MATRIX_CHARS =
 	"0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZｱｲｳｴｵｶｷｸｹｺｻｼｽｾｿﾀﾁﾂﾃﾄﾅﾆﾇﾈﾉﾊﾋﾌﾍﾎﾏﾐﾑﾒﾓﾔﾕﾖﾗﾘﾙﾚﾛﾜｦﾝ";

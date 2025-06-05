@@ -1,4 +1,4 @@
-import type { AutumnParticle, Size } from "@vista-voyage/type";
+import type { AutumnParticle, Size } from "@lab/vista-voyage/type";
 
 export const createAutumnParticle = (size: Size): AutumnParticle => {
 	// 様々な紅葉の色を定義 - より多くのバリエーションを追加

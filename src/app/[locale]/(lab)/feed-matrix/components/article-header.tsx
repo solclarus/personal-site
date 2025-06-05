@@ -1,9 +1,9 @@
 "use client";
 
-import { RemoveFeedButton } from "@feed-matrix/components/remove-feed-button";
-import { extractDomain } from "@feed-matrix/lib";
-import { useFeeds } from "@feed-matrix/store";
-import type { Feed } from "@feed-matrix/type";
+import { RemoveFeedButton } from "@lab/feed-matrix/components/remove-feed-button";
+import { extractDomain } from "@lab/feed-matrix/lib";
+import { useFeeds } from "@lab/feed-matrix/store";
+import type { Feed } from "@lab/feed-matrix/type";
 import { ExternalLink } from "lucide-react";
 import Link from "next/link";
 import { memo } from "react";

@@ -4,7 +4,7 @@ import type {
 	feedItemSchema,
 	feedSchema,
 	formSchema,
-} from "@feed-matrix/schema";
+} from "@lab/feed-matrix/schema";
 import type { z } from "zod";
 
 export type Article = FeedItem & {

@@ -4,7 +4,7 @@ import dynamic from "next/dynamic";
 import { useEffect, useState } from "react";
 
 const AnimatedBackground = dynamic(
-	() => import("@vista-voyage/components/animated-background"),
+	() => import("@lab/vista-voyage/components/animated-background"),
 	{
 		ssr: false,
 		loading: () => (

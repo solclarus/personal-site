@@ -6,7 +6,7 @@ import type {
 	SakuraParticle,
 	SnowParticle,
 	SpaceParticle,
-} from "@vista-voyage/type";
+} from "@lab/vista-voyage/type";
 
 import type { LucideIcon } from "lucide-react";
 
@@ -56,10 +56,10 @@ export type Particle =
 	| SnowParticle
 	| SpaceParticle;
 
-export * from "@vista-voyage/theme/autumn/type";
-export * from "@vista-voyage/theme/bubble/type";
-export * from "@vista-voyage/theme/matrix/type";
-export * from "@vista-voyage/theme/rain/type";
-export * from "@vista-voyage/theme/sakura/type";
-export * from "@vista-voyage/theme/snow/type";
-export * from "@vista-voyage/theme/space/type";
+export * from "@lab/vista-voyage/theme/autumn/type";
+export * from "@lab/vista-voyage/theme/bubble/type";
+export * from "@lab/vista-voyage/theme/matrix/type";
+export * from "@lab/vista-voyage/theme/rain/type";
+export * from "@lab/vista-voyage/theme/sakura/type";
+export * from "@lab/vista-voyage/theme/snow/type";
+export * from "@lab/vista-voyage/theme/space/type";

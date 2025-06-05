@@ -1,4 +1,4 @@
-import type { BubbleParticle, Size } from "@vista-voyage/type";
+import type { BubbleParticle, Size } from "@lab/vista-voyage/type";
 
 export const createBubbleParticle = (size: Size): BubbleParticle => {
 	// 泡のサイズバリエーションを増やす
