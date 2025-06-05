@@ -1,4 +1,4 @@
-import type { SakuraParticle, Size } from "@vista-voyage/type";
+import type { SakuraParticle, Size } from "@lab/vista-voyage/type";
 
 export const createSakuraParticle = (size: Size): SakuraParticle => {
 	// 桜の色を HSL で定義し、実際に使用する

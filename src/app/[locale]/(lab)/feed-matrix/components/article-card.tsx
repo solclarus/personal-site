@@ -1,6 +1,6 @@
 "use client";
 
-import type { Article } from "@feed-matrix/type";
+import type { Article } from "@lab/feed-matrix/type";
 import { useFormatter } from "next-intl";
 import Link from "next/link";
 import { memo } from "react";

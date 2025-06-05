@@ -1,5 +1,5 @@
-import { THEMES } from "@vista-voyage/config";
-import type { Particle, Size, ThemeType } from "@vista-voyage/type";
+import { THEMES } from "@lab/vista-voyage/config";
+import type { Particle, Size, ThemeType } from "@lab/vista-voyage/type";
 
 export const drawAndUpdateParticles = (
 	ctx: CanvasRenderingContext2D,

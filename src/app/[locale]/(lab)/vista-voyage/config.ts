@@ -37,9 +37,9 @@ import {
 	updateSakuraParticle,
 	updateSnowParticle,
 	updateSpaceParticle,
-} from "@vista-voyage/theme";
+} from "@lab/vista-voyage/theme";
 
-import type { Particle, Size, Theme, ThemeType } from "@vista-voyage/type";
+import type { Particle, Size, Theme, ThemeType } from "@lab/vista-voyage/type";
 
 export const THEMES: Record<ThemeType, Theme> = {
 	autumn: {

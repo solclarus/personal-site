@@ -1,8 +1,8 @@
 "use client";
 
-import { fetchRss, refreshFeed } from "@feed-matrix/action";
-import { getAllArticles } from "@feed-matrix/lib";
-import type { Feed } from "@feed-matrix/type";
+import { fetchRss, refreshFeed } from "@lab/feed-matrix/action";
+import { getAllArticles } from "@lab/feed-matrix/lib";
+import type { Feed } from "@lab/feed-matrix/type";
 import useSWR from "swr";
 import useSWRMutation from "swr/mutation";
 import { z } from "zod";

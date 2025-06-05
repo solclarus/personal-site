@@ -1,8 +1,8 @@
 "use client";
 
-import { ThemeSwitcher } from "@vista-voyage/components/theme-switcher";
-import type { Size, ThemeType } from "@vista-voyage/type";
-import { useAnimation } from "@vista-voyage/use-animation";
+import { ThemeSwitcher } from "@lab/vista-voyage/components/theme-switcher";
+import type { Size, ThemeType } from "@lab/vista-voyage/type";
+import { useAnimation } from "@lab/vista-voyage/use-animation";
 import { useEffect, useRef, useState } from "react";
 
 const AnimatedBackground = () => {

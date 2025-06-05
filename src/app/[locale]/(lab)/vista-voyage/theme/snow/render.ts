@@ -1,4 +1,4 @@
-import type { Size, SnowParticle } from "@vista-voyage/type";
+import type { Size, SnowParticle } from "@lab/vista-voyage/type";
 
 export const createSnowParticle = (size: Size): SnowParticle => {
 	// サイズのバリエーションを増やす（特に結晶形は大きめに）

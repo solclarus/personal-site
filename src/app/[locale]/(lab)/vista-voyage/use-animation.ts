@@ -2,9 +2,9 @@
 
 import type React from "react";
 
-import { THEMES } from "@vista-voyage/config";
-import type { Size, ThemeType } from "@vista-voyage/type";
-import type { Particle } from "@vista-voyage/type";
+import { THEMES } from "@lab/vista-voyage/config";
+import type { Size, ThemeType } from "@lab/vista-voyage/type";
+import type { Particle } from "@lab/vista-voyage/type";
 import { useEffect, useRef, useState } from "react";
 
 export function useAnimation(

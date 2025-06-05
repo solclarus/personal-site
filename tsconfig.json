@@ -22,8 +22,7 @@
 		"paths": {
 			"@/*": ["src/*"],
 			"@ui/*": ["src/components/ui/*"],
-			"@feed-matrix/*": ["src/app/[locale]/(lab)/feed-matrix/*"],
-			"@vista-voyage/*": ["src/app/[locale]/(lab)/vista-voyage/*"]
+			"@lab/*": ["src/app/[locale]/(lab)/*"]
 		}
 	},
 	"include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],

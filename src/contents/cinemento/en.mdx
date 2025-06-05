@@ -1,8 +1,45 @@
+export const metadata = {
+	slug: "cinemento",
+	href: "https://cinemento.vercel.app",
+	title: "Cinemento",
+  icon: "/images/portfolio/cinemento-icon.jpg",
+	image: "/images/portfolio/cinemento.jpg",
+  createdAt: "2025-03-05",
+	description: "Movie log app",
+};
+
 ## Project Overview
 
 Cinemento is a movie logging application that helps users track their watching history and discover new films. It integrates with the TMDB API to provide comprehensive movie information.
 
 ## Key Features
+
+![](/images/portfolio/cinemento.jpg)
+
+```tsx
+// MDXのコンテンツ
+import MdxContent from "./page.mdx";
+// MDX内のexportしたオブジェクトをimport
+import { meta } from "./page.mdx"
+
+// syntax hightlight用 CSS
+import "prismjs/themes/prism-tomorrow.css";
+
+export default async function Page() {
+  return (
+    <article>
+      <div>{meta.title}</div>
+      <div>{meta.author}</div>
+      <MdxContent />
+    </article>
+  )
+}
+```
+
+```sh
+export $PATH
+```
+
 
 ### Movie Tracking
 
@@ -17,6 +54,14 @@ Cinemento is a movie logging application that helps users track their watching h
 - Search with filters (genres, years, ratings)
 - Get personalized recommendations
 - See detailed movie information
+
+```sh
+{
+  "@mdx-js/loader": "^3.1.0",
+  "@mdx-js/react": "^3.1.0",
+  "@next/mdx": "^15.3.2",
+}
+```
 
 ### Technical Implementation
 

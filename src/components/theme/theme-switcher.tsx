@@ -47,9 +47,9 @@ export function ThemeSwitcher() {
 		>
 			<AnimatePresence mode="wait">
 				{theme === "light" ? (
-					<MotionSun {...variant} />
+					<MotionSun {...variant} color="orange" />
 				) : (
-					<MotionMoon {...variant} />
+					<MotionMoon {...variant} color="yellow" />
 				)}
 			</AnimatePresence>
 		</Button>

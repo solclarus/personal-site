@@ -1,4 +1,4 @@
-import type { RainParticle, Size } from "@vista-voyage/type";
+import type { RainParticle, Size } from "@lab/vista-voyage/type";
 
 export const createRainParticle = (size: Size): RainParticle => {
 	// 雨の強さを場所によって変えるためのファクター

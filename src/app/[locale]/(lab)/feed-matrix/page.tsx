@@ -1,9 +1,9 @@
 "use client";
 
-import { AddFeedForm } from "@feed-matrix/components/add-feed-form";
-import { FeedContent } from "@feed-matrix/components/feed-content";
-import { ReloadFeedButton } from "@feed-matrix/components/reload-feed-button";
-import { useFeeds } from "@feed-matrix/store";
+import { AddFeedForm } from "@lab/feed-matrix/components/add-feed-form";
+import { FeedContent } from "@lab/feed-matrix/components/feed-content";
+import { ReloadFeedButton } from "@lab/feed-matrix/components/reload-feed-button";
+import { useFeeds } from "@lab/feed-matrix/store";
 import { Skeleton } from "@ui/skeleton";
 import { Toaster } from "sonner";
 

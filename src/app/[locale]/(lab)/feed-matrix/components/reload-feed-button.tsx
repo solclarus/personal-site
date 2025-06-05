@@ -1,6 +1,6 @@
 "use client";
 
-import { useFeeds } from "@feed-matrix/store";
+import { useFeeds } from "@lab/feed-matrix/store";
 import { Button } from "@ui/button";
 import { RefreshCwIcon } from "lucide-react";
 import { toast } from "sonner";
