@@ -21,6 +21,7 @@ export default async function PortfolioDetail({ params }: Props) {
 				width={900}
 				height={600}
 				className="w-full object-cover"
+				unoptimized
 			/>
 			<header className="space-y-4">
 				<div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
