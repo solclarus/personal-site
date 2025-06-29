@@ -16,7 +16,7 @@ import { useLocale } from "next-intl";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 
-export function RaderNav() {
+export function RadarNav() {
 	const pathname = usePathname();
 	const locale = useLocale();
 	const [isExpanded, setIsExpanded] = useState(false);
