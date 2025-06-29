@@ -1,36 +1,93 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Personal Site
+
+A modern personal website built with Next.js, featuring a portfolio, blog, and interactive lab experiments.
+
+## Features
+
+- **🌐 Internationalization**: Full support for English and Japanese with next-intl
+- **📝 Blog**: Powered by Newt CMS with server-side rendering
+- **💼 Portfolio**: MDX-based project showcases with bilingual content
+- **🧪 Lab**: Interactive experiments and demos including:
+  - FeedMatrix: RSS feed aggregator and reader
+  - Vista Voyage: Animated particle system themes
+- **🎨 Modern UI**: Built with shadcn/ui and Tailwind CSS
+- **✨ Animations**: Smooth interactions with Framer Motion
+- **🌓 Theme Support**: Light/dark mode switching
+
+## Tech Stack
+
+- **Framework**: Next.js 15 with App Router
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS + shadcn/ui components
+- **Content**: MDX for portfolio, Newt CMS for blog
+- **Animation**: Framer Motion (motion package)
+- **State Management**: Zustand for client-side state
+- **Code Quality**: Biome for linting and formatting
+- **Git Hooks**: Lefthook for pre-commit checks
 
 ## Getting Started
 
-First, run the development server:
+1. **Install dependencies**:
+   ```bash
+   npm install
+   ```
+
+2. **Set up environment variables**:
+   ```bash
+   # Required for Newt CMS integration
+   NEWT_SPACE_UID=your_space_uid
+   NEWT_CDN_API_TOKEN=your_api_token
+   ```
+
+3. **Run the development server**:
+   ```bash
+   npm run dev
+   ```
+
+4. **Open** [http://localhost:3000](http://localhost:3000) in your browser
+
+## Development Commands
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+# Development
+npm run dev          # Start development server
+npm run build        # Build for production
+npm run start        # Start production server
+
+# Code Quality
+npm run check        # Check formatting, linting, imports
+npm run format       # Format code
+npm run lint         # Lint code
+npm run check:fix    # Auto-fix all issues
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Project Structure
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```
+src/
+├── app/[locale]/           # Internationalized routing
+│   ├── (main)/            # Main pages (home, blog, portfolio)
+│   └── (lab)/             # Interactive lab experiments
+├── components/            # Reusable UI components
+├── lib/                   # Utility functions and data fetching
+├── messages/              # i18n translation files
+├── contents/              # MDX portfolio content
+└── types/                 # TypeScript type definitions
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Lab Projects
 
-## Learn More
+Each lab project is self-contained with its own:
+- `components/` - Project-specific React components
+- `lib.ts` - Utility functions
+- `store.ts` - Zustand state management
+- `type.ts` - TypeScript definitions
+- `schema.ts` - Zod validation schemas
 
-To learn more about Next.js, take a look at the following resources:
+## Deployment
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+This project is optimized for deployment on Vercel. Simply connect your repository and deploy with zero configuration.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## License
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+MIT License - feel free to use this project as a template for your own personal site.
